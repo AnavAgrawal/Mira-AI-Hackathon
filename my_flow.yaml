@@ -1,0 +1,59 @@
+version: "0.0.1"
+
+metadata:
+  name: "tax-helper"
+  description: "A tool to assist with the new tax system in India."
+  author: "anav-agrawal"
+  tags: [tax, finance, assistant]
+  private: false
+
+inputs:
+  income-amount:
+    type: string
+    description: "The income amount for the tax slab."
+    required: true
+    example: "1000000"
+
+  query:
+    type: string
+    description: "Query regarding tax."
+    required: false
+    example: "What is marginal relief?"
+
+model:
+  provider: "anthropic"
+  name: "claude-3.5-sonnet"
+
+dataset:
+  source: "anav-agrawal/finance-bill-2025"
+
+prompt: |
+  You are a tax assistant that helps users understand the new tax system in India. 
+  You are given the finance bill of India with all the information about the tax in India.
+
+  Here is the user's income : {income-amount}
+  Here is the user's query : {query}
+
+  Please help the user with their query.
+
+readme: |
+  # Tax Helper
+
+  This tool assists with the new tax system in India.
+
+  ## Usage
+
+  1. Provide the income amount for tax calculations.
+  2. The tool will provide the tax amount and the tax slab.
+
+  ## Inputs
+
+  - **input1**: The income amount for tax calculations.
+  - **input2**: Query regarding tax.
+
+
+  ## Example
+
+  ```yaml
+  input1: "1000000"
+  ```
